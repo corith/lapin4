@@ -1,10 +1,15 @@
 
-export const GameBoard = {
-    spaces: [
-        [null,null,null,null,null,null,null,null,null,null],
-        [null,null,null,null,null,null,null,null,null,null],
-        [null,null,null,null,null,null,null,null,null,null],
-        [null,null,null,null,null,null,null,null,null,null],
-        [null,null,null,null,null,null,null,null,null,null],
-    ]
-}
+export const GameBoard =
+        [
+            [null,null,null,null,null,null,null,null],
+            [null,null,null,null,null,null,null,null],
+            [null,null,null,null,null,null,null,null],
+            [null,null,null,null,null,null,null,null],
+            [null,null,null,null,null,null,null,null],
+            [null,null,null,null,null,null,null,null],
+            [null,null,null,null,null,null,null,null],
+            [null,null,null,null,null,null,null,null],
+        ]
+
+
+

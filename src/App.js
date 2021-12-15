@@ -1,42 +1,26 @@
 import './App.css';
-import {Row} from "./components/Row";
+import {GameBoardComponent} from "./components/GameBoardComponent";
+import {GameHeader} from "./components/GameHeader";
+import {SetUpGameComponent} from "./components/SetUpGameComponent";
 
 function App() {
   return (
-    <div className="">
-        <div>
-          <h1 className='flex justify-center
-                        text-4xl text-white
-                        p-10 m-2 rounded-2xl
-                        bg-gradient-to-r from-blue-500 via-pink-500 to-yellow-600'> Connect 4 Lobby </h1>
-        </div>
-
-        <table className='table-auto flex justify-center pt-10'>
-            <tbody>
-                {
-                    [...Array(8)].map((e, i) => {
-                        return (
-                            <tr key={i}>
-                            {
-                                [...Array(8)].map((e2 , z) => {
-                                   return (
-                                        <td key={z}>
-                                            <Row i={i === 0 || i === 7 ? 2 : i >= 4 ? 1 : 0}/>
-                                        </td>
-                                   )
-                                })
-                            }
-                            </tr>
-                        )
-                    })
-                }
-            </tbody>
-        </table>
-
-
-
+    <div className='pb-10'>
+        <GameHeader />
+        <SetUpGameComponent />
+        <WhoseTurn player={1}/>
+        <GameBoardComponent />
     </div>
   );
+}
+
+
+const WhoseTurn = ({player}) => {
+    return(
+        <div className='flex justify-center pt-3 text-white'>
+            <p> Player {player}'s Turn! </p>
+        </div>
+    )
 }
 
 export default App;
