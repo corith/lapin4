@@ -19,3 +19,12 @@ export const GBExample = [
     [null,null,null,2,null,1,null,null],
     [null,null,2,null,null,1,null,null],
 ]
+
+export const gbNotLive = [
+    [null,null,null,null,null,null,null,null],
+    [null,1,1,1,1,1,1,null],
+    [null,2,null,2,1,null,2,null],
+    [null,1,null,1,2,null,1,null],
+    [null,2,2,2,2,2,2,null],
+    [null,null,null,null,null,null,null,null],
+]

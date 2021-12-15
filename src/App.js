@@ -16,7 +16,7 @@ function App() {
         <GameHeader />
         <SetUpGameComponent setP1={setPlayer1} setP2={setPlayer2} setIsLive={setIsLive} isLive={isLive}/>
         {isLive ? <WhoseTurn player={player1.name}/> : <></>}
-        <GameBoardComponent />
+        <GameBoardComponent isLive={isLive}/>
     </div>
   );
 }
@@ -24,8 +24,8 @@ function App() {
 
 const WhoseTurn = ({player}) => {
     return(
-        <div className='flex justify-center pt-3 text-white'>
-            <p> {player}'s Turn! </p>
+        <div className='flex justify-center pt-5 text-white'>
+            <p className='animate-bounce'> {player}'s Turn! </p>
         </div>
     )
 }
