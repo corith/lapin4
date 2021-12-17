@@ -1,8 +1,9 @@
 import {useState} from "react";
 import {Player} from "../models/Player";
+import {DefaultGameBoard} from "../models/GameBoard";
 
 
-export const SetUpGameComponent = ({setP1, setP2, setIsLive, isLive}) => {
+export const SetUpGameComponent = ({setP1, setP2, setIsLive, isLive, setBoard}) => {
     const [p1Name, setP1Name] = useState()
     const [p2Name, setP2Name] = useState()
 
@@ -10,6 +11,7 @@ export const SetUpGameComponent = ({setP1, setP2, setIsLive, isLive}) => {
         e.preventDefault()
         if (isLive) {
             // reset game
+            setBoard(DefaultGameBoard)
             setIsLive(false)
         } else {
             setIsLive(true)
