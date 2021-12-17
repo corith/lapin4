@@ -2,6 +2,7 @@ import {Cell} from "./Cell";
 import {useState} from "react";
 
 export const GameBoardComponent = ({isLive, whoseTurn, setTurn, board, p1, p2, thereIsAWinner, setWinner}) => {
+    const [winnerCoords, setCoords] = useState([])
 
     const takeTurn = (cIndex) => {
         if (isLive && !thereIsAWinner) {
@@ -22,10 +23,8 @@ export const GameBoardComponent = ({isLive, whoseTurn, setTurn, board, p1, p2, t
 
     const checkForWinner = () => {
         if (checkPlayer(1)) {
-            highlightWinners(1)
             return true
         } else if (checkPlayer(2)) {
-            highlightWinners(2)
             return true
         }
         return false
@@ -39,6 +38,9 @@ export const GameBoardComponent = ({isLive, whoseTurn, setTurn, board, p1, p2, t
                 connected += 1
             }
         }
+        if (connected === 4) {
+            highlightWinners(i,z,num)
+        }
         return connected
     }
 
@@ -49,28 +51,44 @@ export const GameBoardComponent = ({isLive, whoseTurn, setTurn, board, p1, p2, t
                 connected += 1
             }
         }
+        // highlight winners
+        if (connected === 4) {
+            for (let x = 0; x < 4; x++) {
+                board[i+x][z] = num === 1 ? 4 : 5
+            }
+        }
         return connected
     }
 
     const checkDiag = (i,z,num) => {
         let connected = 1
-        // Check Diagnol right
+        // Check Diagonal right
         for (let x = 1; x < 4; x++) {
             if (z < 5 && i < 3 && board[i+x][z+x] === num) {
                 connected += 1
             }
         }
 
-        // Check Diagnol left
         if (connected !== 4) {
             connected = 1
         } else {
+            // high light winners
+            for (let x = 0; x < 4; x++) {
+                board[i+x][z+x] = num === 1 ? 4 : 5
+            }
             return connected
         }
 
+        // Check Diagonal left
         for (let x = 1; x < 4; x++) {
             if ( i < 3 && board[i+x][z-x] === num) {
                 connected += 1
+            }
+        }
+
+        if (connected === 4) {
+            for (let x = 0; x < 4; x++) {
+                board[i+x][z-x] = num === 1 ? 4 : 5
             }
         }
         return connected
@@ -88,13 +106,9 @@ export const GameBoardComponent = ({isLive, whoseTurn, setTurn, board, p1, p2, t
         return true
     }
 
-    const highlightWinners = () => {
-        for (let i = 0; i < board.length; i++) {
-            for (let z = 0; z < board[i].length; z++) {
-                if (board[i][z] === null) {
-                    return false
-                }
-            }
+    const highlightWinners = (i,z,num) => {
+        for (let x = 0; x < 4; x++) {
+            board[i][z+x] = num === 1 ? 4 : 5
         }
     }
 
@@ -126,7 +140,7 @@ export const GameBoardComponent = ({isLive, whoseTurn, setTurn, board, p1, p2, t
                                 [...Array(8)].map((e2 , z) => {
                                     return (
                                         <td key={z}>
-                                            <Cell cIndex={z} playerNumber={row[z] === 1 ? 0 : row[z] === 2 ? 1 : row[z] === 3 ? 3 : 2} takeTurn={takeTurn}/>
+                                            <Cell cIndex={z} playerNumber={row[z] === 1 ? 0 : row[z] === 2 ? 1 : row[z] === 3 ? 3 : row[z] === 4 ? 4 : row[z] === 5 ? 5 : 2} takeTurn={takeTurn}/>
                                         </td>
                                     )
                                 })
