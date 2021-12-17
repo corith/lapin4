@@ -1,5 +1,5 @@
 
-export const GameBoard =
+export const DefaultGameBoard =
         [
             [null,null,null,null,null,null,null,null],
             [null,null,null,null,null,null,null,null],

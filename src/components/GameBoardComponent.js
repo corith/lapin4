@@ -1,19 +1,19 @@
-import {Row} from "./Row";
-import {GBExample, gbNotLive} from "../models/GameBoard";
-import {useEffect, useState} from "react";
+import {Cell} from "./Cell";
+import {useEffect} from "react";
 
-export const GameBoardComponent = ({isLive}) => {
+export const GameBoardComponent = ({isLive, whoseTurn, setTurn, board}) => {
 
-    const [board ,setBoard] = useState(gbNotLive)
-
-    useEffect(() => {
-        console.log("useEffect GBC")
+    const takeTurn = (cIndex) => {
         if (isLive) {
-            setBoard(GBExample)
-        } else {
-            setBoard(gbNotLive)
+            for (let i = 5; i < board.length; i--) {
+                if (board[i][cIndex] == null) {
+                    board[i][cIndex] = whoseTurn === 1 ? 1 : 2
+                    break
+                }
+            }
+            setTurn(whoseTurn === 1 ? 2 : 1)
         }
-    }, [isLive])
+    }
 
     return (
         <table className='table-auto flex justify-center pt-5'>
@@ -26,13 +26,8 @@ export const GameBoardComponent = ({isLive}) => {
                                 [...Array(8)].map((e2 , z) => {
                                     return (
                                         <td key={z}>
-                                            {
-                                                // isLive ?
-                                                <Row i={row[z] === 1 ? 0 : row[z] === 2 ? 1 : row[z] === 3 ? 3 : 2 }/>
-                                                // :
-                                                // <Row i={i === 0 || i === 5 ? 2 : i >= 3 ? 1 : 0}/>
-
-                                            }
+                                            {/*<Cell cIndex={z} playerNumber={whoseTurn === 1 ? 1 : 2} takeTurn={takeTurn}/>*/}
+                                            <Cell cIndex={z} playerNumber={row[z] === 1 ? 0 : row[z] === 2 ? 1 : row[z] === 3 ? 3 : 2} takeTurn={takeTurn}/>
                                         </td>
                                     )
                                 })

@@ -1,18 +1,51 @@
 import {useState} from "react";
 import {Player} from "../models/Player";
+import {DefaultGameBoard} from "../models/GameBoard";
 
 
-export const SetUpGameComponent = ({setP1, setP2, setIsLive, isLive}) => {
+export const SetUpGameComponent = ({setP1, setP2, setIsLive, isLive, setBoard}) => {
     const [p1Name, setP1Name] = useState()
     const [p2Name, setP2Name] = useState()
 
     const handleStartGame = (e) => {
+        console.log(isLive)
         e.preventDefault()
         if (isLive) {
             // reset game
-            setIsLive(false)
+
+            if (window.confirm("Starting a new game will wipe all progress...") === true) {
+                console.log("Resetting game")
+                setBoard([
+                    [null,null,null,null,1,null,null,null],
+                    [null,null,null,2,1,null,null,null],
+                    [null,null,1,null,2,null,null,null],
+                    [null,2,1,2,1,2,1,null],
+                    [null,null,null,null,2,null,null,null],
+                    [null,null,null,null,1,null,null,null],
+                ])
+                setIsLive(false)
+            }
         } else {
             setIsLive(true)
+            setBoard([
+                [null,null,null,null,null,null,null,null],
+                [null,null,null,null,null,null,null,null],
+                [null,null,null,null,null,null,null,null],
+                [null,null,null,null,null,null,null,null],
+                [null,null,null,null,null,null,null,null],
+                [null,null,null,null,null,null,null,null],
+            ])
+        }
+        console.log("after " + isLive)
+    }
+
+
+    const setPlayerName = (number, name) => {
+        name = name.replace(" ", "") === "" ? "Player " + number : name
+        if (number === 1) {
+            setP1(new Player(name, number))
+        } else if (number === 2) {
+            setP2(new Player(name, number))
         }
     }
     return (
@@ -22,7 +55,7 @@ export const SetUpGameComponent = ({setP1, setP2, setIsLive, isLive}) => {
                 <div className='flex justify-between'>
                     <div className='p-3'>
                         <label htmlFor='p1-name' className='text-white pr-2 text-2xl'>Player 1</label>
-                        <input placeholder='Player 1' type="text" name='p1-name' className='p-2 rounded-2xl' onChange={(e) => setP1(new Player(e.target.value, 1))}/>
+                        <input placeholder='Player 1' type="text" name='p1-name' className='p-2 rounded-2xl' onChange={(e) => setPlayerName(1, e.target.value)}/>
                     </div>
 
                     <div className='
@@ -45,7 +78,7 @@ export const SetUpGameComponent = ({setP1, setP2, setIsLive, isLive}) => {
                 <div className='flex justify-between'>
                     <div className='p-3'>
                         <label htmlFor='p2-name' className='text-white pr-2 text-2xl'>Player 2</label>
-                        <input placeholder='Player 2' type="text" name='p2-name' className='p-2 rounded-2xl' onChange={(e) => setP2(new Player(e.target.value, 2))}/>
+                        <input placeholder='Player 2' type="text" name='p2-name' className='p-2 rounded-2xl' onChange={(e) => setPlayerName( 2, e.target.value)}/>
                     </div>
                     <div className='
                     rounded-full h-1/4 w-1.5
