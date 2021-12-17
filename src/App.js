@@ -4,6 +4,7 @@ import {GameHeader} from "./components/GameHeader";
 import {SetUpGameComponent} from "./components/SetUpGameComponent";
 import {useState} from "react";
 import {Player} from "./models/Player";
+import {Footer} from "./components/Footer";
 
 function App() {
     const [player1, setPlayer1] = useState(new Player("Player 1", 1))
@@ -21,7 +22,7 @@ function App() {
     ])
 
   return (
-    <div className='pb-10'>
+    <div className='pb-10 absolute sm:relative'>
         <GameHeader />
         <SetUpGameComponent setP1={setPlayer1}
                             setP2={setPlayer2}
@@ -40,6 +41,8 @@ function App() {
                             p2={player2}
                             thereIsAWinner={thereIsAWinner}
                             setWinner={setIsAWinner}/>
+
+        <Footer />
     </div>
   );
 }
