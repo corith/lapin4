@@ -18,6 +18,7 @@ export const SetUpGameComponent = ({setP1, setP2, setIsLive, isLive, setBoard, s
                 ])
                 setIsLive(false)
                 setWinner(false)
+
             }
         } else {
             setIsLive(true)
@@ -31,6 +32,7 @@ export const SetUpGameComponent = ({setP1, setP2, setIsLive, isLive, setBoard, s
                 [null,null,null,null,null,null,null,null],
             ])
             setWinner(false)
+            // setLast(wentFirstLast === 1 ? 2 : 1)
         }
     }
 
@@ -64,7 +66,7 @@ export const SetUpGameComponent = ({setP1, setP2, setIsLive, isLive, setBoard, s
                 <button
                     onClick={handleStartGame}
                     className='
-                    text-white
+                    text-white font-bold
                     p-3 ml-5 lg:ml-0 rounded-2xl
                     bg-gradient-to-l from-blue-500 via-pink-500 to-yellow-600'>
                     {isLive ? 'Start New Game' : 'Start Game'}

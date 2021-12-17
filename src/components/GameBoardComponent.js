@@ -1,16 +1,18 @@
 import {Cell} from "./Cell";
-import {useState} from "react";
 
-export const GameBoardComponent = ({isLive, whoseTurn, setTurn, board, p1, p2, thereIsAWinner, setWinner}) => {
-    const [winnerCoords, setCoords] = useState([])
+export const GameBoardComponent = ({isLive, whoseTurn, setTurn, board, p1, p2, thereIsAWinner, setWinner, wentFirstLast, setLast}) => {
 
     const takeTurn = (cIndex) => {
-        if (isLive && !thereIsAWinner) {
+        if (isLive && !thereIsAWinner && !checkStaleMate()) {
             for (let i = 5; i >= 0; i--) {
                 if (board[i][cIndex] == null) {
                     board[i][cIndex] = whoseTurn === 1 ? 1 : 2
                     if (!checkForWinner()) {
+                        checkStaleMate()
                         setTurn(whoseTurn === 1 ? 2 : 1)
+                    } else {
+                        setTurn(wentFirstLast === 1 ? 2 : 1)
+                        setLast(wentFirstLast === 1 ? 2 : 1)
                     }
                     break
                 }
@@ -100,7 +102,7 @@ export const GameBoardComponent = ({isLive, whoseTurn, setTurn, board, p1, p2, t
                 }
             }
         }
-        alert("There has been a stalemate")
+        alert("There has been a stale mate...you both lose")
         return true
     }
 
@@ -120,6 +122,8 @@ export const GameBoardComponent = ({isLive, whoseTurn, setTurn, board, p1, p2, t
                         alert((num === 1 ? p1.name : p2.name) + " wins!!!")
                         setWinner(true)
                         return true
+                    } else {
+                        checkStaleMate()
                     }
                 }
             }

@@ -2,7 +2,7 @@ import './App.css';
 import {GameBoardComponent} from "./components/GameBoardComponent";
 import {GameHeader} from "./components/GameHeader";
 import {SetUpGameComponent} from "./components/SetUpGameComponent";
-import {useEffect, useState} from "react";
+import {useState} from "react";
 import {Player} from "./models/Player";
 import {Footer} from "./components/Footer";
 
@@ -10,6 +10,7 @@ function App() {
     const [player1, setPlayer1] = useState(new Player("Player 1", 1))
     const [player2, setPlayer2] = useState(new Player("Player 2", 2))
     const [whoseTurn, setTurn] = useState(1)
+    const [wentFirstLast, setWFL] = useState(1)
     const [isLive , setIsLive] = useState(false)
     const [thereIsAWinner, setIsAWinner] = useState(false)
     const [board ,setBoard] = useState([
@@ -40,7 +41,9 @@ function App() {
                             p1={player1}
                             p2={player2}
                             thereIsAWinner={thereIsAWinner}
-                            setWinner={setIsAWinner}/>
+                            setWinner={setIsAWinner}
+                            wentFirstLast={wentFirstLast}
+                            setLast={setWFL}/>
 
         <Footer />
     </div>
@@ -50,7 +53,7 @@ function App() {
 
 const WhoseTurn = ({player}) => {
     return(
-        <div className='flex justify-center pt-5 text-white'>
+        <div className='flex justify-center pt-5 text-white font-bold text-lg '>
             <p className='animate-bounce'> {player}'s Turn! </p>
         </div>
     )
