@@ -130,7 +130,7 @@ export const GameBoardComponent = ({isLive, whoseTurn, setTurn, board, p1, p2, t
 
 
     return (
-        <table className='table-auto flex justify-center pt-5'>
+        <table className='table-auto lg:flex lg:justify-center pt-5'>
             <tbody>
             {
                 board.map((row, i) => {

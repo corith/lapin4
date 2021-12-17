@@ -43,8 +43,8 @@ export const SetUpGameComponent = ({setP1, setP2, setIsLive, isLive, setBoard, s
         }
     }
     return (
-        <div className=' mt-5'>
-            <form className='flex justify-around'>
+        <div className='mt-5'>
+            <form className='lg:flex grid justify-around'>
 
                 <div className='flex justify-between'>
                     <div className='p-3'>
@@ -64,7 +64,7 @@ export const SetUpGameComponent = ({setP1, setP2, setIsLive, isLive, setBoard, s
                     onClick={handleStartGame}
                     className='
                     text-white
-                    p-3 rounded-2xl
+                    p-3 ml-5 lg:ml-0 rounded-2xl
                     bg-gradient-to-l from-blue-500 via-pink-500 to-yellow-600'>
                     {isLive ? 'Start New Game' : 'Start Game'}
                 </button>
@@ -75,10 +75,9 @@ export const SetUpGameComponent = ({setP1, setP2, setIsLive, isLive, setBoard, s
                         <input placeholder='Player 2' type="text" name='p2-name' className='p-2 rounded-2xl' onChange={(e) => setPlayerName( 2, e.target.value)}/>
                     </div>
                     <div className='
-                    rounded-full h-1/4 w-1.5
-                    p-5 mt-3
-                    bg-gradient-to-r from-yellow-600 via-yellow-400 to-yellow-600'>
-
+                        rounded-full h-1/4 w-1.5
+                        p-5 mt-3
+                        bg-gradient-to-r from-yellow-600 via-yellow-400 to-yellow-600'>
                     </div>
                 </div>
 
