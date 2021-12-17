@@ -1,20 +1,13 @@
-import {useState} from "react";
 import {Player} from "../models/Player";
-import {DefaultGameBoard} from "../models/GameBoard";
 
 
-export const SetUpGameComponent = ({setP1, setP2, setIsLive, isLive, setBoard}) => {
-    const [p1Name, setP1Name] = useState()
-    const [p2Name, setP2Name] = useState()
+export const SetUpGameComponent = ({setP1, setP2, setIsLive, isLive, setBoard, setWinner}) => {
 
     const handleStartGame = (e) => {
-        console.log(isLive)
         e.preventDefault()
         if (isLive) {
             // reset game
-
             if (window.confirm("Starting a new game will wipe all progress...") === true) {
-                console.log("Resetting game")
                 setBoard([
                     [null,null,null,null,1,null,null,null],
                     [null,null,null,2,1,null,null,null],
@@ -27,6 +20,7 @@ export const SetUpGameComponent = ({setP1, setP2, setIsLive, isLive, setBoard}) 
             }
         } else {
             setIsLive(true)
+            // setWinner(false)
             setBoard([
                 [null,null,null,null,null,null,null,null],
                 [null,null,null,null,null,null,null,null],
@@ -36,7 +30,7 @@ export const SetUpGameComponent = ({setP1, setP2, setIsLive, isLive, setBoard}) 
                 [null,null,null,null,null,null,null,null],
             ])
         }
-        console.log("after " + isLive)
+        setWinner(false)
     }
 
 
