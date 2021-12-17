@@ -11,12 +11,12 @@ function App() {
     const [whoseTurn, setTurn] = useState(1)
     const [isLive , setIsLive] = useState(false)
     const [board ,setBoard] = useState([
-        [null,null,null,null,null,null,null,null],
-        [null,null,null,null,null,null,null,null],
-        [null,null,null,null,null,null,null,null],
-        [null,null,null,null,null,null,null,null],
-        [null,null,null,null,null,null,null,null],
-        [null,null,null,null,null,null,null,null],
+        [null,null,null,null,1,null,null,null],
+        [null,null,null,2,1,null,null,null],
+        [null,null,1,null,2,null,null,null],
+        [null,2,1,2,1,2,1,null],
+        [null,null,null,null,2,null,null,null],
+        [null,null,null,null,1,null,null,null],
     ])
 
   return (

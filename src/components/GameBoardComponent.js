@@ -1,24 +1,10 @@
 import {Cell} from "./Cell";
-import {GameBoard, GBExample, gbNotLive} from "../models/GameBoard";
-import {useEffect, useState} from "react";
+import {useEffect} from "react";
 
 export const GameBoardComponent = ({isLive, whoseTurn, setTurn, board}) => {
 
-    //
-    // useEffect(() => {
-    //     console.log("useEffect GBC")
-    //     if (isLive) {
-    //         setBoard(GBExample)
-    //     } else {
-    //         setBoard(gbNotLive)
-    //     }
-    // }, [isLive])
-
     const takeTurn = (cIndex) => {
-        console.log("WHose turn " + whoseTurn)
-        console.log("cIndex + " + cIndex)
         if (isLive) {
-            // alert("Took turn in column " + cIndex)cIndex
             for (let i = 5; i < board.length; i--) {
                 if (board[i][cIndex] == null) {
                     board[i][cIndex] = whoseTurn === 1 ? 1 : 2
@@ -27,8 +13,6 @@ export const GameBoardComponent = ({isLive, whoseTurn, setTurn, board}) => {
             }
             setTurn(whoseTurn === 1 ? 2 : 1)
         }
-        console.log(board)
-        console.log("Now it is " + whoseTurn + " Turn")
     }
 
     return (
