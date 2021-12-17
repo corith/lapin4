@@ -9,14 +9,15 @@ export const SetUpGameComponent = ({setP1, setP2, setIsLive, isLive, setBoard, s
             // reset game
             if (window.confirm("Starting a new game will wipe all progress...") === true) {
                 setBoard([
-                    [null,null,null,null,1,null,null,null],
-                    [null,null,null,2,1,null,null,null],
-                    [null,null,1,null,2,null,null,null],
-                    [null,2,1,2,1,2,1,null],
-                    [null,null,null,null,2,null,null,null],
-                    [null,null,null,null,1,null,null,null],
+                    [null,null,null,null,3,null,null,null],
+                    [null,null,null,3,3,null,null,null],
+                    [null,null,3,null,3,null,null,null],
+                    [null,3,3,3,3,3,3,null],
+                    [null,null,null,null,3,null,null,null],
+                    [null,null,null,null,3,null,null,null],
                 ])
                 setIsLive(false)
+                setWinner(false)
             }
         } else {
             setIsLive(true)
@@ -29,8 +30,8 @@ export const SetUpGameComponent = ({setP1, setP2, setIsLive, isLive, setBoard, s
                 [null,null,null,null,null,null,null,null],
                 [null,null,null,null,null,null,null,null],
             ])
+            setWinner(false)
         }
-        setWinner(false)
     }
 
 

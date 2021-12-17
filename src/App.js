@@ -2,7 +2,7 @@ import './App.css';
 import {GameBoardComponent} from "./components/GameBoardComponent";
 import {GameHeader} from "./components/GameHeader";
 import {SetUpGameComponent} from "./components/SetUpGameComponent";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {Player} from "./models/Player";
 import {Footer} from "./components/Footer";
 
@@ -13,12 +13,12 @@ function App() {
     const [isLive , setIsLive] = useState(false)
     const [thereIsAWinner, setIsAWinner] = useState(false)
     const [board ,setBoard] = useState([
-        [null,null,null,null,1,null,null,null],
-        [null,null,null,2,1,null,null,null],
-        [null,null,1,null,2,null,null,null],
-        [null,2,1,2,1,2,1,null],
-        [null,null,null,null,2,null,null,null],
-        [null,null,null,null,1,null,null,null],
+        [null,null,null,null,3,null,null,null],
+        [null,null,null,3,3,null,null,null],
+        [null,null,3,null,3,null,null,null],
+        [null,3,3,3,3,3,3,null],
+        [null,null,null,null,3,null,null,null],
+        [null,null,null,null,3,null,null,null],
     ])
 
   return (

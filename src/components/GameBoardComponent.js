@@ -12,7 +12,6 @@ export const GameBoardComponent = ({isLive, whoseTurn, setTurn, board, p1, p2, t
                     if (!checkForWinner()) {
                         setTurn(whoseTurn === 1 ? 2 : 1)
                     }
-                    console.log(board)
                     break
                 }
             }
@@ -34,7 +33,6 @@ export const GameBoardComponent = ({isLive, whoseTurn, setTurn, board, p1, p2, t
         let connected = 1
         for (let x = 1; x < 4; x++) {
             if (board[i][z+x] === num) {
-                console.log("counting a horizontal")
                 connected += 1
             }
         }
@@ -119,7 +117,7 @@ export const GameBoardComponent = ({isLive, whoseTurn, setTurn, board, p1, p2, t
                     let connected = checkHoriz(i, z, num) === 4 ? 4 : checkVert(i,z,num) === 4 ? 4 : checkDiag(i,z,num)
 
                     if (connected === 4) {
-                        alert((num === 1 ? p1.name : p2.name) + " wins")
+                        alert((num === 1 ? p1.name : p2.name) + " wins!!!")
                         setWinner(true)
                         return true
                     }
