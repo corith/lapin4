@@ -32,7 +32,7 @@ connection will be highlighted in green
 * Clearly displays whose turn it is at the top of the board
 * Dark mode so you can play before bed
 
-To-do list:
+### To-do list:
 * Add a "remix" mode
 * Allow users to change their color
 * make it more mobile friendly
