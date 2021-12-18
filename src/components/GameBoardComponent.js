@@ -1,8 +1,10 @@
 import {Piece} from "./Piece";
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
 
 export const GameBoardComponent = ({isLive, whoseTurn, setTurn, board, p1, p2, thereIsAWinner, setIsAWinner, wentFirstLast, setLast, previousWinners}) => {
+    const [winner , setCurrentWinner] = useState()
 
+// used for warning on page refresh
     useEffect(() => {
         const unloadCallback = (event) => {
             event.preventDefault();
@@ -30,14 +32,16 @@ export const GameBoardComponent = ({isLive, whoseTurn, setTurn, board, p1, p2, t
                 }
             }
         } else if (thereIsAWinner) {
-            alert("There has already been a winner! " + (whoseTurn === 1 ? p1.name : p2.name)  + " won!")
+            alert("There has already been a winner! " + (winner === 1 ? p1.name : p2.name)  + " won!")
         }
     }
 
     const checkForWinner = () => {
         if (checkPlayer(1)) {
+            setCurrentWinner(1)
             return true
         } else if (checkPlayer(2)) {
+            setCurrentWinner(2)
             return true
         }
         return false
@@ -135,7 +139,7 @@ export const GameBoardComponent = ({isLive, whoseTurn, setTurn, board, p1, p2, t
                         setIsAWinner(true)
                         previousWinners.push(whoseTurn === 1 ? p1.name : p2.name)
                         return true
-                    } 
+                    }
                 }
             }
         }
