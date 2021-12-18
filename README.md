@@ -1,4 +1,5 @@
 # Connect 4 Lobby
+<img width="1024" alt="Screen Shot 2021-12-17 at 9 51 26 PM" src="https://user-images.githubusercontent.com/44050949/146626628-4ce62feb-5872-48bf-ab0f-f0ddd5fb71d4.png">
 
 ## Project Description
 This is a simple implementation of Connect 4. 
