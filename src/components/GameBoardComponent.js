@@ -1,6 +1,18 @@
 import {Cell} from "./Cell";
+import {useEffect} from "react";
 
 export const GameBoardComponent = ({isLive, whoseTurn, setTurn, board, p1, p2, thereIsAWinner, setWinner, wentFirstLast, setLast}) => {
+
+    useEffect(() => {
+        const unloadCallback = (event) => {
+            event.preventDefault();
+            event.returnValue = "";
+            return "";
+        };
+
+        window.addEventListener("beforeunload", unloadCallback);
+        return () => window.removeEventListener("beforeunload", unloadCallback);
+    }, []);
 
     const takeTurn = (cIndex) => {
         if (isLive && !thereIsAWinner && !checkStaleMate()) {
@@ -122,9 +134,7 @@ export const GameBoardComponent = ({isLive, whoseTurn, setTurn, board, p1, p2, t
                         alert((num === 1 ? p1.name : p2.name) + " wins!!!")
                         setWinner(true)
                         return true
-                    } else {
-                        checkStaleMate()
-                    }
+                    } 
                 }
             }
         }

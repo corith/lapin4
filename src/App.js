@@ -2,7 +2,7 @@ import './App.css';
 import {GameBoardComponent} from "./components/GameBoardComponent";
 import {GameHeader} from "./components/GameHeader";
 import {SetUpGameComponent} from "./components/SetUpGameComponent";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {Player} from "./models/Player";
 import {Footer} from "./components/Footer";
 
