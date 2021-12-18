@@ -1,6 +1,6 @@
 import '../App.css'
 
-export const Cell = ({playerNumber , cIndex, takeTurn}) => {
+export const Piece = ({playerNumber , cIndex, takeTurn}) => {
     let color1 = 'bg-gradient-to-r from-blue-700 via-blue-400 to-blue-700'
     // color for player 1's winning pieces
     let color1W = 'bg-gradient-to-r from-blue-700 via-green-400 to-blue-700 border border-green-400 animate-pulse'

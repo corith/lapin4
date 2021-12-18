@@ -31,6 +31,8 @@ connection will be highlighted in green
 * Although not gorgeous, it can be played on mobile
 * Clearly displays whose turn it is at the top of the board
 * Dark mode so you can play before bed
+* Keeps a short term list of previous winners for that session. Makes it easy to keep track of a best of X.
+to reset the list simply to a full page refresh.
 
 ### To-do list:
 * Add a "remix" mode

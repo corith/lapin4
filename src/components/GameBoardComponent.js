@@ -1,7 +1,7 @@
-import {Cell} from "./Cell";
+import {Piece} from "./Piece";
 import {useEffect} from "react";
 
-export const GameBoardComponent = ({isLive, whoseTurn, setTurn, board, p1, p2, thereIsAWinner, setWinner, wentFirstLast, setLast}) => {
+export const GameBoardComponent = ({isLive, whoseTurn, setTurn, board, p1, p2, thereIsAWinner, setIsAWinner, wentFirstLast, setLast, previousWinners}) => {
 
     useEffect(() => {
         const unloadCallback = (event) => {
@@ -132,7 +132,8 @@ export const GameBoardComponent = ({isLive, whoseTurn, setTurn, board, p1, p2, t
 
                     if (connected === 4) {
                         alert((num === 1 ? p1.name : p2.name) + " wins!!!")
-                        setWinner(true)
+                        setIsAWinner(true)
+                        previousWinners.push(whoseTurn === 1 ? p1.name : p2.name)
                         return true
                     } 
                 }
@@ -152,7 +153,7 @@ export const GameBoardComponent = ({isLive, whoseTurn, setTurn, board, p1, p2, t
                                 [...Array(8)].map((e2 , z) => {
                                     return (
                                         <td key={z}>
-                                            <Cell cIndex={z} playerNumber={row[z] === 1 ? 0 : row[z] === 2 ? 1 : row[z] === 3 ? 3 : row[z] === 4 ? 4 : row[z] === 5 ? 5 : 2} takeTurn={takeTurn}/>
+                                            <Piece cIndex={z} playerNumber={row[z] === 1 ? 0 : row[z] === 2 ? 1 : row[z] === 3 ? 3 : row[z] === 4 ? 4 : row[z] === 5 ? 5 : 2} takeTurn={takeTurn}/>
                                         </td>
                                     )
                                 })
