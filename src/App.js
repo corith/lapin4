@@ -33,7 +33,9 @@ function App() {
                             setBoard={setBoard}
                             setWinner={setIsAWinner}/>
 
-        {isLive ? <WhoseTurn player={whoseTurn === 1 ? player1.name : player2.name}/> : <></>}
+        {isLive ? <WhoseTurn player={whoseTurn === 1 ? player1.name : player2.name}
+                             thereIsAWinner={thereIsAWinner}
+                             prevWinner={previousWinners[previousWinners.length-1]}/> : <></>}
 
         <div className='flex justify-center'>
             <GameBoardComponent isLive={isLive}
@@ -58,10 +60,12 @@ function App() {
 }
 
 
-const WhoseTurn = ({player}) => {
+const WhoseTurn = ({player, thereIsAWinner, prevWinner}) => {
     return(
-        <div className='flex justify-center pt-5 text-white font-bold text-lg '>
-            <p className='animate-bounce'> {player}'s Turn! </p>
+        <div className={(thereIsAWinner ? 'animate-bounce' : '' ) + ' flex justify-center pt-8 text-white font-bold text-lg'}>
+            <p className={(thereIsAWinner ? 'text-2xl text-white-400 animate-pulse headerGradient rounded-2xl p-2 mb-5' : 'animate-bounce' )}>
+                {thereIsAWinner ? prevWinner + ' won!' : player + '\'s Turn!' }
+            </p>
         </div>
     )
 }

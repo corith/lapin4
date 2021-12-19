@@ -20,7 +20,6 @@ export const checkPlayer = (num, board, setIsAWinner, previousWinners, whoseTurn
                                 checkDiag(i,z,num, board)
 
                 if (connected === 4) {
-                    alert((num === 1 ? p1.name : p2.name) + " wins!!!")
                     setIsAWinner(true)
                     previousWinners.push(whoseTurn === 1 ? p1.name : p2.name)
                     return true

@@ -9,7 +9,7 @@ export const GameBoardComponent = ({isLive, whoseTurn, setTurn,
 
     const takeTurn = (cIndex) => {
         if (isLive && !thereIsAWinner && !checkStaleMate(board)) {
-            for (let i = 5; i >= 0; i--) {
+            for (let i = board.length - 1; i >= 0; i--) {
                 if (board[i][cIndex] == null) {
                     board[i][cIndex] = whoseTurn === 1 ? 1 : 2
                     if (!checkForWinner(setCurrentWinner , board, setIsAWinner, previousWinners,whoseTurn,p1,p2)) {
