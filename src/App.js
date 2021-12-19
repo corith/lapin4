@@ -37,17 +37,20 @@ function App() {
 
         {isLive ? <WhoseTurn player={whoseTurn === 1 ? player1.name : player2.name}/> : <></>}
 
-        <GameBoardComponent isLive={isLive}
-                            whoseTurn={whoseTurn}
-                            setTurn={setTurn}
-                            board={board}
-                            p1={player1}
-                            p2={player2}
-                            thereIsAWinner={thereIsAWinner}
-                            setIsAWinner={setIsAWinner}
-                            wentFirstLast={wentFirstLast}
-                            setLast={setWFL}
-                            previousWinners={previousWinners}/>
+        <div className='flex justify-center'>
+            <GameBoardComponent isLive={isLive}
+                                whoseTurn={whoseTurn}
+                                setTurn={setTurn}
+                                board={board}
+                                p1={player1}
+                                p2={player2}
+                                thereIsAWinner={thereIsAWinner}
+                                setIsAWinner={setIsAWinner}
+                                wentFirstLast={wentFirstLast}
+                                setLast={setWFL}
+                                previousWinners={previousWinners}/>
+
+        </div>
 
         <PreviousWinnersComp previousWinners={previousWinners} />
         <Footer />
