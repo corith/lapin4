@@ -42,7 +42,7 @@ export const SetUpGameComponent = ({setP1, setP2, setIsLive, isLive, setBoard, s
                     <div className='
                     rounded-full h-1/4 w-1.5
                     p-5 mt-3
-                    bg-gradient-to-r from-blue-700 via-blue-400 to-blue-700'>
+                    player1Color'>
 
                     </div>
                 </div>
@@ -52,7 +52,7 @@ export const SetUpGameComponent = ({setP1, setP2, setIsLive, isLive, setBoard, s
                     className='
                     text-white font-bold
                     p-3 ml-5 lg:ml-0 rounded-2xl
-                    bg-gradient-to-l from-blue-500 via-pink-500 to-yellow-600'>
+                    headerGradientReverse'>
                     {isLive ? 'Clear Board' : 'Start Game'}
                 </button>
 
@@ -64,7 +64,7 @@ export const SetUpGameComponent = ({setP1, setP2, setIsLive, isLive, setBoard, s
                     <div className='
                         rounded-full h-1/4 w-1.5
                         p-5 mt-3
-                        bg-gradient-to-r from-yellow-600 via-yellow-400 to-yellow-600'>
+                        player2Color'>
                     </div>
                 </div>
 
