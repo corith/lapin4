@@ -54,15 +54,20 @@ to reset the list simply to a full page refresh.
 4. `npm run start`
 
 ## Usage
-> You will first need to click start game in order to start dropping pieces.  
-> There is two players, and you may change the name of either player by typing in the player name input field.  
-> When it is your turn, click anywhere in the column you want to drop your piece and your piece will be placed in that column  
-> Once a player has connected 4 of their pieces in a row, they are declared the winner.  
-> If you wish to play again, click "Start New Game" and click okay on the prompt. Then click "Start Game"
+> Fill in each players name and then click 'Start Game'. If you do not provide a name then Player1/2 will be used.  
+> When it is your turn, denoted above the board, click anywhere in a column to drop your piece in that column.
+> Once a player has connected 4 of their pieces in a row (horizontally, vertically, diagonally), they are declared the winner.  
+> If you wish to play again, click "Clear Board" and click okay on the prompt. Then click "Start Game"!
+
+<img width="1249" alt="MainPage" src="https://user-images.githubusercontent.com/44050949/146690538-c4ddafc5-f99c-4d9d-8e4c-51a1ba78b711.png">
+<img width="1249" alt="GamePlay" src="https://user-images.githubusercontent.com/44050949/146690547-8b3f6b11-6c8a-49c3-95d8-51b0a4821f9a.png">
+<img width="1249" alt="Winner" src="https://user-images.githubusercontent.com/44050949/146690549-949a4462-648f-4a35-bc24-b4e463741eb7.png">
+
 
 ## Contributors
 
 Cory Sebastian
+
 
 ## License
 
