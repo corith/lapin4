@@ -5,7 +5,7 @@ import {SetUpGameComponent} from "./components/SetUpGameComponent";
 import {useEffect, useState} from "react";
 import {Player} from "./models/Player";
 import {Footer} from "./components/Footer";
-import {PreviousWinnersComp} from "./PreviousWinnersComp";
+import {PreviousWinnersComp} from "./components/PreviousWinnersComp";
 import {warnOnPageRefresh} from "./utils/WarningUtil";
 import {fourMationBoard} from "./utils/GameBoardUtil";
 
