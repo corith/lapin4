@@ -7,7 +7,7 @@ export const SetUpGameComponent = ({setP1, setP2, setIsLive, isLive, setBoard, s
         e.preventDefault()
         if (isLive) {
             // reset game
-            if (window.confirm("Starting a new game will wipe all progress...") === true) {
+            if (window.confirm("Starting a new game will wipe the current game progress...") === true) {
                 setBoard([
                     [null,null,null,null,3,null,null,null],
                     [null,null,null,3,3,null,null,null],
@@ -69,7 +69,7 @@ export const SetUpGameComponent = ({setP1, setP2, setIsLive, isLive, setBoard, s
                     text-white font-bold
                     p-3 ml-5 lg:ml-0 rounded-2xl
                     bg-gradient-to-l from-blue-500 via-pink-500 to-yellow-600'>
-                    {isLive ? 'Start New Game' : 'Start Game'}
+                    {isLive ? 'Clear Board' : 'Start Game'}
                 </button>
 
                 <div className='flex justify-between'>
