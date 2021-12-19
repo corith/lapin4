@@ -5,8 +5,9 @@ import {SetUpGameComponent} from "./components/SetUpGameComponent";
 import {useEffect, useState} from "react";
 import {Player} from "./models/Player";
 import {Footer} from "./components/Footer";
-import {list} from "postcss";
-import {PreviousWinnersComp} from "./PreviousWinnersComp";
+import {PreviousWinnersComp} from "./components/PreviousWinnersComp";
+import {warnOnPageRefresh} from "./utils/WarningUtil";
+import {fourMationBoard} from "./utils/GameBoardUtil";
 
 function App() {
     const [player1, setPlayer1] = useState(new Player("Player 1", 1))
@@ -15,15 +16,12 @@ function App() {
     const [wentFirstLast, setWFL] = useState(1)
     const [isLive , setIsLive] = useState(false)
     const [thereIsAWinner, setIsAWinner] = useState(false)
-    const [previousWinners , setWinners] = useState([])
-    const [board ,setBoard] = useState([
-        [null,null,null,null,3,null,null,null],
-        [null,null,null,3,3,null,null,null],
-        [null,null,3,null,3,null,null,null],
-        [null,3,3,3,3,3,3,null],
-        [null,null,null,null,3,null,null,null],
-        [null,null,null,null,3,null,null,null],
-    ])
+    const [previousWinners] = useState([])
+    const [board ,setBoard] = useState(fourMationBoard)
+
+    useEffect(() => {
+        warnOnPageRefresh()
+    }, []);
 
   return (
     <div className='pb-10 absolute sm:relative'>
@@ -47,12 +45,13 @@ function App() {
                                 thereIsAWinner={thereIsAWinner}
                                 setIsAWinner={setIsAWinner}
                                 wentFirstLast={wentFirstLast}
-                                setLast={setWFL}
+                                setWentLast={setWFL}
                                 previousWinners={previousWinners}/>
 
         </div>
 
         <PreviousWinnersComp previousWinners={previousWinners} />
+
         <Footer />
     </div>
   );

@@ -1,41 +1,24 @@
 import {Player} from "../models/Player";
+import {warnOnBoardClear} from "../utils/WarningUtil";
+import {fourMationBoard, getCleanBoard} from "../utils/GameBoardUtil";
 
 
 export const SetUpGameComponent = ({setP1, setP2, setIsLive, isLive, setBoard, setWinner}) => {
 
-    const handleStartGame = (e) => {
+    const handleStartOrClear = (e) => {
         e.preventDefault()
         if (isLive) {
-            // reset game
-            if (window.confirm("Starting a new game will wipe the current game progress...") === true) {
-                setBoard([
-                    [null,null,null,null,3,null,null,null],
-                    [null,null,null,3,3,null,null,null],
-                    [null,null,3,null,3,null,null,null],
-                    [null,3,3,3,3,3,3,null],
-                    [null,null,null,null,3,null,null,null],
-                    [null,null,null,null,3,null,null,null],
-                ])
+            if (warnOnBoardClear()) {
+                setBoard(fourMationBoard)
                 setIsLive(false)
                 setWinner(false)
-
             }
         } else {
             setIsLive(true)
-            // setWinner(false)
-            setBoard([
-                [null,null,null,null,null,null,null,null],
-                [null,null,null,null,null,null,null,null],
-                [null,null,null,null,null,null,null,null],
-                [null,null,null,null,null,null,null,null],
-                [null,null,null,null,null,null,null,null],
-                [null,null,null,null,null,null,null,null],
-            ])
+            setBoard(getCleanBoard())
             setWinner(false)
-            // setLast(wentFirstLast === 1 ? 2 : 1)
         }
     }
-
 
     const setPlayerName = (number, name) => {
         name = name.replace(" ", "") === "" ? "Player " + number : name
@@ -45,6 +28,7 @@ export const SetUpGameComponent = ({setP1, setP2, setIsLive, isLive, setBoard, s
             setP2(new Player(name, number))
         }
     }
+
     return (
         <div className='mt-5'>
             <form className='lg:flex grid justify-around'>
@@ -58,17 +42,17 @@ export const SetUpGameComponent = ({setP1, setP2, setIsLive, isLive, setBoard, s
                     <div className='
                     rounded-full h-1/4 w-1.5
                     p-5 mt-3
-                    bg-gradient-to-r from-blue-700 via-blue-400 to-blue-700'>
+                    player1Color'>
 
                     </div>
                 </div>
 
                 <button
-                    onClick={handleStartGame}
+                    onClick={handleStartOrClear}
                     className='
                     text-white font-bold
                     p-3 ml-5 lg:ml-0 rounded-2xl
-                    bg-gradient-to-l from-blue-500 via-pink-500 to-yellow-600'>
+                    headerGradientReverse'>
                     {isLive ? 'Clear Board' : 'Start Game'}
                 </button>
 
@@ -80,7 +64,7 @@ export const SetUpGameComponent = ({setP1, setP2, setIsLive, isLive, setBoard, s
                     <div className='
                         rounded-full h-1/4 w-1.5
                         p-5 mt-3
-                        bg-gradient-to-r from-yellow-600 via-yellow-400 to-yellow-600'>
+                        player2Color'>
                     </div>
                 </div>
 
