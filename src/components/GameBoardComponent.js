@@ -38,7 +38,7 @@ export const GameBoardComponent = ({isLive, whoseTurn, setTurn,
                                 [...Array(8)].map((e2 , z) => {
                                     return (
                                         <td key={z}>
-                                            <Piece cIndex={z} playerNumber={row[z] === 1 ? 0 : row[z] === 2 ? 1 : row[z] === 3 ? 3 : row[z] === 4 ? 4 : row[z] === 5 ? 5 : 2} takeTurn={takeTurn}/>
+                                            <Piece cIndex={z} colorCode={row[z]} takeTurn={takeTurn}/>
                                         </td>
                                     )
                                 })

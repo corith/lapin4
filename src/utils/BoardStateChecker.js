@@ -1,4 +1,5 @@
 export const checkForWinner = (setCurrentWinner, board, setIsAWinner, previousWinners,whoseTurn,p1,p2) => {
+
     if (checkPlayer(1, board, setIsAWinner, previousWinners, whoseTurn, p1, p2)) {
         setCurrentWinner(1)
         return true
@@ -7,6 +8,7 @@ export const checkForWinner = (setCurrentWinner, board, setIsAWinner, previousWi
         return true
     }
     return false
+
 }
 
 export const checkPlayer = (num, board, setIsAWinner, previousWinners, whoseTurn, p1,p2) => {
@@ -107,6 +109,13 @@ export const checkStaleMate = (board) => {
             if (board[i][z] === null) {
                 return false
             }
+        }
+    }
+
+    // highlights each players piece red in the case of a stalemate
+    for (let i = 0; i < board.length; i++) {
+        for (let z = 0; z < board[i].length; z++) {
+            board[i][z] = board[i][z] === 1 ? 6 : 7
         }
     }
     alert("There has been a stale mate...you both lose")
