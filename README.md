@@ -39,12 +39,11 @@ to reset the list simply to a full page refresh.
 * Allow users to change their color
 * make it more mobile friendly
 * Add animation to make the pieces look like they are sliding down when dropped
-* Store a list of previous winners
 * Create different themes
 * Create a computer player
 * possibly add an undo button if users find themselves making a large amount of accidental "drops"
 * store state of the game so users could return to the game later
-* look into custom pop-ups to replace the alerts
+* create custom pop-ups to replace the alerts
 * Add accessibility features and reduce motion options etc.
 
 ## Getting Started
